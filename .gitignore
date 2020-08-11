@@ -1,0 +1,7 @@
+backend/venv
+**/*.pyc
+backend/src/**/__pycache__
+backend/src**/migrations
+backend/src/db.sqlite3
+gui/node_modules
+gui/build

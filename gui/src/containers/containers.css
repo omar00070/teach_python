@@ -1,0 +1,283 @@
+.layout {
+  min-height: 79.8vh;
+}
+
+/*<----------------------------------- nav ------------------------------>*/
+
+.nav {
+  background: #f5f4f4;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.171);
+  transition: all 0.3s ease-in;
+  font-family: "Raleway", sans-serif;
+}
+
+.logo {
+  transition: all 0.3s ease-out;
+  -webkit-filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
+
+.logo:hover {
+  transform: rotate(180deg);
+}
+
+/* ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25rem;
+  width: 101%;
+  list-style: none;
+  position: absolute;
+  left: 0%;
+  top: 0;
+  z-index: 10;
+  background: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.171);
+  transform: translateY(-26rem);
+  transition: all 0.2s ease-in-out;
+} */
+
+ul {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+  transition: all 0.3s ease-in;
+}
+
+a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: rgba(116, 115, 115, 0.603);
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 1.5rem 2rem;
+}
+
+a:hover {
+  /* background: rgba(221, 221, 221, 0.363); */
+  background: #fafafa;
+  color: rgb(85, 85, 85);
+}
+a:active {
+  /* background: rgba(221, 221, 221, 0.363); */
+  background: #fafafa;
+  color: rgb(85, 85, 85);
+}
+
+a:focus {
+  /* background: rgba(221, 221, 221, 0.363); */
+  background: #fafafa;
+  color: rgb(85, 85, 85);
+}
+
+a:hover::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 0px;
+  height: 100%;
+  width: 10px;
+  height: 100%;
+  background: rgb(221, 221, 221);
+}
+
+.menu-icon {
+  -webkit-filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+/*<----------------------------------- banner ------------------------------>*/
+
+.banner {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: rgb(190, 190, 190);
+  /* background: url("../imges/code.jpg") repeat rgba(43, 3, 3, 0.89); */
+  font-family: "Raleway", sans-serif;
+}
+
+.banner p {
+  color: rgb(105, 105, 105);
+}
+
+.btn {
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  background: white;
+  border-radius: 3rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(190, 190, 190, 0.555);
+  box-shadow: 0 1px 2px 0 rgba(128, 128, 128, 0.199);
+  cursor: pointer;
+  transform-origin: left;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: rgba(51, 51, 51, 0.555);
+  color: #fafafa;
+}
+
+.btn:active {
+  outline: none;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.banner-container {
+  font-size: 2rem;
+}
+
+.banner-container h1 {
+  font-family: "Aldrich", sans-serif;
+  font-size: 5rem;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+/*<----------------------------------- MainSection ------------------------------>*/
+
+.section {
+  width: 100%;
+  min-height: 50vh;
+  background: rgba(211, 211, 211, 0.171);
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 98rem;
+  padding: 4rem;
+  margin: 0 auto;
+}
+
+.grid-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 14rem;
+  text-align: center;
+}
+
+.grid-heading h1 {
+  font-size: 2.9rem;
+  margin-bottom: 1.5rem;
+}
+.grid-heading p {
+  font-size: 1.7rem;
+  color: rgb(99, 99, 99);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  font-size: 1.4rem;
+}
+
+.grid-item {
+  padding: 1rem 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.grid-item h2 {
+  display: block;
+  float: auto;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.grid-item p {
+  font-size: 1.6rem;
+  color: rgb(99, 99, 99);
+}
+/* <---------------------------------Skills Section -----------------------------> */
+.skill-section {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+.skill-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 75rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container {
+  padding: 1.6rem;
+}
+
+.skill-heading h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+.skill-heading p {
+  font-size: 1.7rem;
+  color: rgb(99, 99, 99);
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin: 2.3rem 0;
+}
+
+.list-item p {
+  font-size: 1.6rem;
+  color: rgb(99, 99, 99);
+}
+
+.list-card {
+  min-height: 30vh;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px 0 rgba(173, 173, 173, 0.521);
+  margin: 3rem auto 0;
+  max-width: 60rem;
+}
+
+.list-card .icon {
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 3rem;
+}
+
+.footer {
+  width: 100%;
+  height: 10vh;
+  background: #f5f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: rgba(92, 92, 92, 0.801);
+}
+
+/* <---------------------------------Assignments Section -----------------------------> */
+
+.ASST-section {
+  min-height: 80.5vh;
+}
