@@ -1,7 +1,8 @@
-from .views import AssignmentView, QuestionsView, GradedAssignmentsView
-from rest_framework.routers import DefaultRouter
+from .views import AssignmentView, QuestionsView, GradedAssignmentsView, AssignmentDetailView
+from django.urls import path
 
-router = DefaultRouter()
-router.register(r'questions/questions', QuestionsView, basename="questions")
-router.register(r'', AssignmentView, basename="assigments")
-urlpatterns = router.urls
+
+urlpatterns = [
+    path('', AssignmentView.as_view()),
+    path('<pk>/', AssignmentDetailView.as_view())
+]

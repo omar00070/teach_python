@@ -6,7 +6,7 @@ import * as Styles from "./styles/assignments_styles";
 
 const AssignmentList = (props) => {
   useEffect(() => {
-    props.token !== null && props.getAssignments(props.token);
+    props.token !== null && props.getAssignments(props.token, props.username);
   }, [props.token]);
   return (
     <>
@@ -42,7 +42,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAssignments: (token) => dispatch(actions.getASST(token)),
+    getAssignments: (token, username) =>
+      dispatch(actions.getASST(token, username)),
   };
 };
 

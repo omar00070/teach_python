@@ -21,7 +21,7 @@ const getASSTSucess = (assignments) => {
   };
 };
 
-export const getASST = (token) => {
+export const getASST = (token, username) => {
   return (dispatch) => {
     dispatch(getASSTStart());
     axios.defaults.headers = {
@@ -29,7 +29,7 @@ export const getASST = (token) => {
       Authorization: `Token ${token}`,
     };
     axios
-      .get("http://127.0.0.1:8000/api/assignments/")
+      .get(`http://127.0.0.1:8000/api/assignments/?username=${username}`)
       .then((res) => {
         const assignments = res.data;
         dispatch(getASSTSucess(assignments));
