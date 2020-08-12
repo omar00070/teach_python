@@ -85,10 +85,9 @@ const createASSTStart = () => {
   };
 };
 
-const createASSTSuccess = (token) => {
+const createASSTSuccess = () => {
   return {
     type: actionTypes.CREATE_ASST_SUCCESS,
-    token,
   };
 };
 
@@ -102,7 +101,7 @@ const createASSTFail = (error) => {
 export const createASST = (token, asst) => {
   return (dispatch) => {
     dispatch(createASSTStart());
-    axios.defaults.headeres = {
+    axios.defaults.headers = {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`,
     };

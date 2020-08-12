@@ -11,7 +11,7 @@ const Questions = ({ handleChange, data, choices, questions, handleClick }) => {
           return (
             <div key={question_id}>
               <label>
-                <h3>{question.label}</h3>
+                <h3>Question {question.id}</h3>
                 <input
                   name={question_name}
                   type="text"
@@ -20,7 +20,7 @@ const Questions = ({ handleChange, data, choices, questions, handleClick }) => {
                 />
               </label>
               <Choices
-                choices={choices}
+                choices={question.choices}
                 handleChange={handleChange}
                 data={data}
                 question_id={question_id}
@@ -34,14 +34,19 @@ const Questions = ({ handleChange, data, choices, questions, handleClick }) => {
                   value={data[`answer_${question_id}`]}
                 />
               </label>
-              <button name="add_choice" onClick={handleClick}>
+              <button
+                name="add_choice"
+                onClick={(e) => handleClick(e, question_id)}
+              >
                 Add Choice
               </button>
             </div>
           );
         })}
       </div>
-      <button onClick={handleClick}>Add Question</button>
+      <button name="add_question" onClick={handleClick}>
+        Add Question
+      </button>
     </>
   );
 };

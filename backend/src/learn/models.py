@@ -31,10 +31,10 @@ class Choice(models.Model):
 class Question(models.Model):
     question = models.CharField(max_length=200)
     answer = models.ForeignKey(
-        Choice, on_delete=models.CASCADE, related_name="answer")
+        Choice, on_delete=models.CASCADE, related_name="answer", null=True, blank=True)
     choices = models.ManyToManyField(Choice)
     assignment = models.ForeignKey(
-        Assignment, on_delete=models.CASCADE, related_name="questions")
+        Assignment, on_delete=models.CASCADE, related_name="questions", null=True, blank=True)
     order = models.SmallIntegerField()
 
     def __str__(self):

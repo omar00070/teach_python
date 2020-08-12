@@ -2,73 +2,73 @@ import React, { useState } from "react";
 import Questions from "../components/Questions";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/assignments";
+import { produce } from "immer";
 
 const AssignmentCreate = (props) => {
-  const [data, setData] = useState({
-    title: "",
-    answer: "",
-  });
-
-  const [choices, setChoices] = useState([]);
+  const [data, setData] = useState({});
   const [questions, setQuestions] = useState([]);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    const name = e.target.name;
-    name === "add_choice"
-      ? setChoices((prevC) => {
-          const id = prevC.length + 1;
-          return [
-            ...prevC,
-            {
-              id: id,
-              label: `Choice ${id}`,
-              name: `choice_${id}`,
-            },
-          ];
-        })
-      : setQuestions((prevQ) => {
-          const id = prevQ.length + 1;
-          return [
-            ...prevQ,
-            {
-              id: id,
-              label: `Question ${id}`,
-              name: `question_${id}`,
-            },
-          ];
-        });
-  };
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData((prevData) => {
-      return { ...prevData, [name]: value };
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const submitquestions = [];
+    const q_query = [];
     for (let i = 0; i < questions.length; i++) {
-      submitquestions.push({
-        question: data[`question_${i + 1}`],
-      });
-      for (let j = 0; j < choices.length; j++) {
-        const choice = `choice_${j + 1}_${i + 1}`;
-        choice == undefined && submitquestions[i][choices].push(choice);
+      const current_q = questions[i];
+      const q_choices = [];
+      for (let j = 0; j < current_q.choices.length; j++) {
+        q_choices.push(data[`choice_${j + 1}_${i + 1}`]);
       }
-      const answer = `answer_${i + 1}`;
-      submitquestions[i].answer = data[answer];
+      q_query.push({
+        question: data[current_q.name],
+        choices: q_choices,
+        answer: data[`answer_${i + 1}`],
+      });
     }
-    // for (let i = 0; i < questions.length; i++) {
-    //   console.log(questions[i]);
-    // }
-    console.log(submitquestions);
-    console.log(data[`question_${1}`]);
-    const asst = {};
-    // props.createNewASST(props.token, asst);
+    const asst = {
+      title: data.title,
+      teacher: props.username,
+      questions: q_query,
+    };
+    props.createNewASST(props.token, asst);
+  };
+
+  const handleClick = (e, qId) => {
+    e.preventDefault();
+    if (e.target.name === "add_question") {
+      setQuestions((prevQ) => {
+        const questionId = prevQ.length + 1;
+        return [
+          ...prevQ,
+          {
+            id: questionId,
+            name: `question_${questionId}`,
+            choices: [],
+          },
+        ];
+      });
+    } else if (e.target.name === "add_choice") {
+      setQuestions((prevQ) => {
+        const newQ = produce(prevQ, (copyQ) => {
+          const choices = copyQ[qId - 1].choices;
+          const choiceId = choices.length + 1;
+          copyQ[qId - 1].choices.push({
+            id: choiceId,
+            name: `choice_${choiceId}_${qId}`,
+          });
+        });
+        return newQ;
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setData((prevData) => {
+      return {
+        ...prevData,
+        [name]: value,
+      };
+    });
   };
 
   return (
@@ -86,7 +86,6 @@ const AssignmentCreate = (props) => {
         <Questions
           handleChange={handleChange}
           data={data}
-          choices={choices}
           questions={questions}
           handleClick={handleClick}
         />
@@ -99,10 +98,11 @@ const AssignmentCreate = (props) => {
 const mapStateToProps = (state) => {
   return {
     token: state.auth.token,
+    username: state.auth.username,
   };
 };
 
-const mapDispatchToProps = (actions) => {
+const mapDispatchToProps = () => {
   return (dispatch) => {
     return {
       createNewASST: (token, asst) => dispatch(actions.createASST(token, asst)),

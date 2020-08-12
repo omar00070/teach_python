@@ -3,13 +3,12 @@ import React from "react";
 const Choices = ({ choices, data, handleChange, question_id }) => {
   return (
     <div>
-      {choices.map((choice) => {
-        const name = `${choice.name}_${question_id}`;
+      {choices.map((choice, i) => {
         return (
           <label style={{ display: "block" }} key={choice.id}>
-            <h3>{choice.label}</h3>
+            <h3>Choice {i + 1}</h3>
             <input
-              name={name}
+              name={choice.name}
               type="text"
               value={data.name}
               onChange={handleChange}
