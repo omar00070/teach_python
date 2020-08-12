@@ -8,5 +8,6 @@ urlpatterns = [
     path('api/timeline/', include('timeline.api.urls')),
     path('api/learngrid/', include('learnGrid.api.urls')),
     path('api/user/', include('user.urls')),
-    path('api/assignments/', include('learn.api.urls'))
+    path('api/assignments/', include('learn.api.urls')),
+    path('api/graded/', include('learn.api.GradedAssignments.urls'))
 ]

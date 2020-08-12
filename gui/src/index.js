@@ -9,12 +9,14 @@ import { Provider } from "react-redux";
 
 import authReducer from "./store/reducers/auth";
 import assignmentReducer from "./store/reducers/assignments";
+import gradedASSTReducer from "./store/reducers/gradedAssignments";
 
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   auth: authReducer,
   assignments: assignmentReducer,
+  graded: gradedASSTReducer,
 });
 
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)));

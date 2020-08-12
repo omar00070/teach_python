@@ -12,13 +12,13 @@ class Assignment(models.Model):
 
 class GradedAssignment(models.Model):
     student = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True)
+        User, on_delete=models.CASCADE)
     assignment = models.ForeignKey(
         Assignment, on_delete=models.SET_NULL, blank=True, null=True)
     grade = models.FloatField()
 
     def __str__(self):
-        return self.title
+        return f'{self.assignment.title} for {self.student.username}'
 
 
 class Choice(models.Model):

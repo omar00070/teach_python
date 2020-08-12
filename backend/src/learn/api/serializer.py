@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from learn.models import Assignment, Question, Choice
+from learn.models import Assignment, Question, Choice, GradedAssignment
 from django.contrib.auth.models import User
 
 
@@ -17,7 +17,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class AssignmentSerializer(serializers.ModelSerializer):
-    # questions = serializers.SerializerMethodField()
+    questions = serializers.SerializerMethodField()
     teacher = StringSerializer(many=False)
 
     class Meta:
@@ -55,3 +55,35 @@ class AssignmentSerializer(serializers.ModelSerializer):
             question.save()
             order += 1
         return assignment
+
+
+class GradedAssignmentSerializer(serializers.ModelSerializer):
+    assignment = StringSerializer(many=False)
+    student = StringSerializer(many=False)
+
+    class Meta:
+        model = GradedAssignment
+        fields = ("__all__")
+
+    def create(self, request):
+        data = request.data
+        print(data)
+        graded_assignment = GradedAssignment()
+
+        graded_assignment.student = User.objects.get(username=data['student'])
+        assignment = Assignment.objects.get(id=data["asstID"])
+        graded_assignment.assignment = assignment
+
+        answers = [data['answers'][a] for a in data['answers']]
+        questions = assignment.questions.all()
+
+        correct_answers = 0
+        # empty answer case is not covered
+        for question, answer in zip(questions, answers):
+            if question.answer.title == answer:
+                correct_answers += 1
+
+        grade = round(100 * correct_answers/len(questions))
+        graded_assignment.grade = grade
+        graded_assignment.save()
+        return graded_assignment

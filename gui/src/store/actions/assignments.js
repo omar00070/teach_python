@@ -71,6 +71,7 @@ export const getASSTDetail = (token, id) => {
       .get(`http://127.0.0.1:8000/api/assignments/${id}/`)
       .then((res) => {
         const assignmentDetail = res.data;
+        console.log(assignmentDetail);
         dispatch(getASSTDetailSuccess(assignmentDetail));
       })
       .catch((error) => {

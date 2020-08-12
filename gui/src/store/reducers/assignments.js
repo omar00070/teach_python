@@ -3,7 +3,7 @@ import { updateObject } from "../utility";
 
 const initialState = {
   assignments: [],
-  assignmentDetail: {},
+  assignmentDetail: { questions: [{ question: null, choices: [], id: null }] },
   loading: false,
   error: null,
 };
