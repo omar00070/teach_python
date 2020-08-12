@@ -46,8 +46,7 @@ class AssignmentSerializer(serializers.ModelSerializer):
             question.save()
 
             for c in q['choices']:
-                choice = Choice()
-                choice.title = c
+                choice, _ = Choice.objects.get_or_create(title=c)
                 choice.save()
                 question.choices.add(choice)
 
