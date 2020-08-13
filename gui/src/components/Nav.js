@@ -32,7 +32,7 @@ export const Nav = ({ isAuthenticated, logout, username }) => {
         />
         <NavItem
           name="Learn"
-          linkTo="#"
+          linkTo="/assignments"
           handleClick={handleClick}
           active={active}
         />

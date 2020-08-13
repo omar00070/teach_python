@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Choices from "./Choices";
 
 const Questions = ({ handleChange, data, choices, questions, handleClick }) => {

@@ -5,7 +5,8 @@ import { getGradedASST } from "../store/actions/gradedAssignments";
 const Profile = (props) => {
   useEffect(() => {
     props.isAuthorised && props.getGradedASSTs(props.token, props.username);
-  }, [props.token]);
+    console.log("rendered");
+  }, [props.isAuthorised]);
 
   return (
     <>
@@ -14,9 +15,10 @@ const Profile = (props) => {
       ) : (
         <div>
           <h3>hello {props.username}</h3>
-          {props.gradedASSTs.map((asst) => {
-            return <h2 key={asst.id}>{asst.assignment}</h2>;
-          })}
+          {props.isAuthorised &&
+            props.gradedASSTs.map((asst) => {
+              return <h2 key={asst.id}>{asst.assignment}</h2>;
+            })}
         </div>
       )}
     </>
