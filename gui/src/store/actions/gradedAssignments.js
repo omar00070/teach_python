@@ -34,6 +34,7 @@ export const getGradedASST = (token, username) => {
         const gradedASST = res.data;
         dispatch(getGradedASSTSuccess(gradedASST));
       })
+
       .catch((err) => {
         dispatch(getGradedASSTFail(err));
       });
@@ -59,6 +60,12 @@ const createGradedASSTFail = (error) => {
   };
 };
 
+const createGradedASSTFinish = () => {
+  return {
+    type: actionTypes.CREATE_GRADED_ASST_FINISH,
+  };
+};
+
 export const createGradedASST = (token, asst) => {
   return (dispatch) => {
     dispatch(createGradedASSTStart());
@@ -72,6 +79,9 @@ export const createGradedASST = (token, asst) => {
       .post("http://127.0.0.1:8000/api/graded/create/", asst)
       .then((res) => {
         dispatch(createGradedASSTSuccess());
+      })
+      .then((res) => {
+        dispatch(createGradedASSTFinish());
       })
       .catch((err) => {
         dispatch(createGradedASSTFail(err));

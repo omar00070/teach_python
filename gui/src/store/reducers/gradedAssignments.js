@@ -5,6 +5,7 @@ const initialState = {
   assignments: [],
   loading: false,
   error: null,
+  created: false,
 };
 
 const getGradedASSTStart = (state, action) => {
@@ -33,6 +34,7 @@ const createGradedASSTStart = (state, action) => {
   return updateObject(state, {
     loading: true,
     error: null,
+    created: false,
   });
 };
 
@@ -40,6 +42,7 @@ const createGradedASSTFail = (state, action) => {
   return updateObject(state, {
     loading: false,
     error: action.error,
+    created: false,
   });
 };
 
@@ -47,6 +50,15 @@ const createGradedASSTSuccess = (state, action) => {
   return updateObject(state, {
     loading: false,
     error: null,
+    created: true,
+  });
+};
+
+const createGradedASSTFinish = (state, action) => {
+  return updateObject(state, {
+    loading: false,
+    error: null,
+    created: false,
   });
 };
 
@@ -64,6 +76,8 @@ const gradedASSTReducer = (state = initialState, action) => {
       return createGradedASSTSuccess(state, action);
     case actionTypes.CREATE_GRADED_ASST_FAIL:
       return createGradedASSTFail(state, action);
+    case actionTypes.CREATE_GRADED_ASST_FINISH:
+      return createGradedASSTFinish(state, action);
     default:
       return state;
   }

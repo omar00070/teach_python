@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import * as actions from "../store/actions/assignments";
 import { Question } from "../components/Question";
 import { createGradedASST } from "../store/actions/gradedAssignments";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { Spinner } from "../components/Spinner";
+import { Redirect } from "react-router-dom";
 
 const AssignmentDetail = (props) => {
   const id = props.match.params.id;
@@ -11,7 +14,7 @@ const AssignmentDetail = (props) => {
   const [values, setValues] = useState({});
 
   useEffect(() => {
-    props.token && props.getCurrent(props.token, id);
+    props.token !== null && props.getCurrent(props.token, id);
   }, [props.token, id]);
 
   const handleChange = (e) => {
@@ -43,6 +46,11 @@ const AssignmentDetail = (props) => {
     }
   };
 
+  const handleSubmitLoading = () => {
+    if (props.created) return <Redirect to="/" />;
+    else return;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const asst = {
@@ -52,54 +60,66 @@ const AssignmentDetail = (props) => {
     };
     console.log(asst);
     props.createGRADED(props.token, asst);
-    props.history.push("/");
+    // props.history.push("/");
   };
   return (
     <>
-      <div className="list-card">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div
-              style={{
-                borderBottom: "1px solid black",
-                margin: "1rem 0",
-              }}
-            >
-              <h3
-                style={{
-                  marginBottom: "2rem",
-                }}
-              >
-                {props.currentAssignment.title}
-              </h3>
-            </div>
+      <div className="ASST-section">
+        <div className="container q-container">
+          <div className="list-card assignments-card">
+            {handleSubmitLoading()}
+            {props.loading || props.submitLoading ? (
+              <>
+                <div className="q-loading">
+                  <Spinner />
+                </div>
+              </>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <div className="assignemnt-title">
+                    <h3>{props.currentAssignment.title}</h3>
+                  </div>
 
-            <Question
-              title={questions[count].question}
-              choices={questions[count].choices}
-              key={questions[count].id}
-              order={questions[count].order}
-              handleChange={handleChange}
-              values={values}
-            />
-          </div>
-          <div>
-            {count > 0 && (
-              <button name="previous" onClick={handleQuestions}>
-                Previous
-              </button>
+                  <Question
+                    title={questions[count].question}
+                    choices={questions[count].choices}
+                    key={questions[count].id}
+                    order={questions[count].order}
+                    handleChange={handleChange}
+                    values={values}
+                  />
+                </div>
+                <div className="question-margin"></div>
+                {count > 0 && (
+                  <button
+                    name="previous"
+                    className="action-btn previous"
+                    onClick={handleQuestions}
+                  >
+                    <FaArrowLeft className="icon" />
+                  </button>
+                )}
+                {count + 1 < questions.length && (
+                  <button
+                    className="action-btn next"
+                    name="next"
+                    onClick={handleQuestions}
+                  >
+                    <FaArrowRight className="icon" />
+                  </button>
+                )}
+                <div>
+                  {count + 1 === questions.length && (
+                    <button className="action-btn finish" type="submit">
+                      Finish
+                    </button>
+                  )}
+                </div>
+              </form>
             )}
-
-            <button name="next" onClick={handleQuestions}>
-              Next
-            </button>
           </div>
-          <div>
-            {count + 1 === questions.length && (
-              <button type="submit">Finish</button>
-            )}
-          </div>
-        </form>
+        </div>
       </div>
     </>
   );
@@ -110,6 +130,10 @@ const mapStateToProps = (state) => {
     username: state.auth.username,
     currentAssignment: state.assignments.assignmentDetail,
     token: state.auth.token,
+    loading: state.assignments.loading,
+    submitLoading: state.graded.loading,
+    created: state.graded.created,
+    newCreated: state.assignments.created,
   };
 };
 

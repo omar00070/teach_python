@@ -6,12 +6,14 @@ const initialState = {
   assignmentDetail: { questions: [{ question: null, choices: [], id: null }] },
   loading: false,
   error: null,
+  created: false,
 };
 
 const getASSTStart = (state, action) => {
   return updateObject(state, {
     loading: true,
     error: null,
+    created: false,
   });
 };
 
@@ -20,6 +22,7 @@ const getASSTSuccess = (state, actions) => {
     assignments: actions.assignments,
     loading: false,
     error: null,
+    created: false,
   });
 };
 
@@ -27,6 +30,7 @@ const getASSTFail = (state, actions) => {
   return updateObject(state, {
     loading: false,
     error: actions.error,
+    created: false,
   });
 };
 
@@ -34,6 +38,7 @@ const getASSTDetailStart = (state, actions) => {
   return updateObject(state, {
     loading: true,
     error: null,
+    created: false,
   });
 };
 
@@ -42,6 +47,7 @@ const getASSTDetailSuccess = (state, actions) => {
     loading: false,
     assignmentDetail: actions.assignmentDetail,
     error: null,
+    created: false,
   });
 };
 
@@ -49,6 +55,7 @@ const getASSTDetailFail = (state, actions) => {
   return updateObject(state, {
     loading: false,
     error: actions.error,
+    created: false,
   });
 };
 

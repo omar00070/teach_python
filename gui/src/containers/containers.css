@@ -268,6 +268,8 @@ a:hover::before {
   margin-right: 3rem;
 }
 
+/* <---------------------------------Footer Section -----------------------------> */
+
 .footer {
   width: 100%;
   height: 10vh;
@@ -279,12 +281,143 @@ a:hover::before {
   color: rgba(92, 92, 92, 0.801);
 }
 
+.footer-icons {
+  margin-top: 1rem;
+}
+
 /* <---------------------------------Assignments Section -----------------------------> */
 
 .ASST-section {
   min-height: 80.5vh;
+  background: #00416a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.assignments-card h1 {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.747);
+}
+
+.spinner-div {
+  display: flex;
+  min-height: 30vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.assignments-card {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.assignemnt-title {
+  text-align: center;
+  border-bottom: 1px solid rgba(180, 180, 180, 0.568);
+  margin-top: 0.5rem;
+}
+
+.assignemnt-title h3 {
+  margin-bottom: 1rem;
+}
+
+/* <---------------------------------Assignment detail Section -----------------------------> */
+
+.assignments-card {
+  min-height: 33rem;
+  position: relative;
+  padding: 1.2rem;
+}
+.assignments-card form {
+  font-size: 1.5rem;
+}
+
+.q-loading {
+  position: absolute;
+  top: 50%;
+  right: 50.5%;
+}
+
+.question-q {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.q-container {
+  padding: 4rem 0.5rem;
+}
+.question-q ul {
+  margin-top: 1.5rem;
+}
+
+.question-q ul li {
+  margin: 0.5rem;
+}
+
+.question-q ul li input {
+  margin-right: 1rem;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.question-card {
+  padding: 1.5rem;
+  min-height: 20rem;
+}
+
+.question-margin {
+  height: 7rem;
+  width: 100%;
+}
+.action-btn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  margin-top: 2rem;
+  bottom: 2rem;
+  background: #9cb2c9;
+  cursor: pointer;
+}
+
+.action-btn:focus {
+  outline: none;
+}
+
+.action-btn .icon {
+  pointer-events: none;
+  color: #fafafa;
+  transform: translate(33%, 7%);
+}
+
+.next {
+  right: 3rem;
+}
+
+.previous {
+  left: 3rem;
+}
+
+.finish {
+  right: 50%;
+  font-size: 2rem;
+  background: #6f8bac;
+  color: white;
+  width: 15rem;
+  border-radius: 2rem;
+  transform: translateX(50%);
+}
 /* <---------------------------------Login Section -----------------------------> */
 
 .login-box {
@@ -389,4 +522,178 @@ a:hover::before {
 
 .error p {
   color: rgb(209, 39, 39);
+}
+
+/* <---------------------------------profile Section -----------------------------> */
+
+.upper-container {
+  width: 100%;
+  height: 35vh;
+  background: #00416a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.image {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  background: grey;
+  margin-bottom: 2rem;
+}
+
+.lower-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile-info {
+  transform: translateY(-7.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 90%;
+}
+
+.info {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  width: 100%;
+}
+.info h3 {
+  margin-bottom: 1rem;
+}
+
+.info div {
+  text-align: center;
+}
+
+.profile-nav {
+  width: 90%;
+  max-width: 80rem;
+  border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+.profile-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.grades-table {
+  width: 90%;
+  max-width: 70rem;
+  margin-bottom: 5rem;
+  padding: 1.5rem;
+}
+.grades-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 2.5rem;
+  background: rgb(212, 212, 212);
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.grades-row p,
+h4,
+li {
+  flex: 1;
+}
+
+.grades-row .title {
+  flex: 2;
+}
+
+.grades-row li {
+  flex: 2;
+}
+
+.alter-row {
+  background: white;
+}
+
+.main-row {
+  background: white;
+  border-bottom: 1px solid rgb(194, 194, 194);
+  margin-bottom: 1rem;
+}
+
+.grade {
+  transform: translateX(0.5rem);
+}
+
+.last-row {
+  background: white;
+  margin-top: 1rem;
+  border-top: 1px solid rgb(194, 194, 194);
+}
+
+.average {
+  flex: 3.3;
+}
+
+.profile-container {
+  font-size: 1.3rem;
+}
+
+.profile-container a {
+  maring: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.685);
+}
+
+.profile-container a::before {
+  width: 0;
+  height: 0;
+}
+
+.profile-container a:hover,
+.profile-container a:focus,
+.profile-container a:active {
+  background: white;
+}
+
+.user-info-card {
+  width: 90%;
+  margin-bottom: 5rem;
+}
+
+.uf-item {
+  max-width: 30rem;
+  margin: 1rem auto;
+}
+
+.uf-item input {
+  background: rgb(239, 240, 241);
+}
+
+.uf-container {
+  text-align: center;
+}
+
+.uf-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(194, 194, 194, 0.582);
+  padding-bottom: 1rem;
+}
+
+.uf-btn {
+  max-width: 15rem;
 }
