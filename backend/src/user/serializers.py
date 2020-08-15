@@ -5,6 +5,11 @@ from rest_auth.registration.serializers import RegisterSerializer
 from rest_framework.authtoken.models import Token
 
 
+class StringSerializer(serializers.StringRelatedField):
+    def to_internal_value(self, value):
+        return value
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -41,17 +46,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TokenSerializer(serializers.ModelSerializer):
-    # user_type = serializers.SerializerMethodField()
+    # email = serializers.SerializerMethodField()
 
     class Meta:
         model = Token
         fields = ('key', 'user')
 
-    # def get_user_type(self, obj):
-    #     serializer_data = UserSerializer(obj.user).data
-    #     is_student = serializer_data.get('is_student')
-    #     is_teacher = serializer_data.get('is_teacher')
-    #     return {
-    #         'is_studnet': is_student,
-    #         'is_teacher': is_teacher
-    #     }
+    # def get_email(self, obj):
+    #     serializer_data = UserSerializer(obj.user.email).data
+    #     return serializer_data

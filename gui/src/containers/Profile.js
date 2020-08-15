@@ -30,7 +30,7 @@ const Profile = (props) => {
               <p>{props.assignmentsCount}</p>
             </div>
             <div>
-              <Link>
+              <Link to={`${props.match.url}/grades`}>
                 <h3>Completed</h3>
               </Link>
               <p>{props.gradedASSTs.length}</p>

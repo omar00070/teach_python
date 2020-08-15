@@ -69,7 +69,6 @@ const createGradedASSTFinish = () => {
 export const createGradedASST = (token, asst) => {
   return (dispatch) => {
     dispatch(createGradedASSTStart());
-    console.log(asst);
 
     axios.defaults.headers = {
       "Content-Type": "application/json",

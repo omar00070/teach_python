@@ -7,7 +7,6 @@ import Profile from "../containers/Profile";
 import AssignmentList from "../containers/AssignmentList";
 import AssignmentDetail from "../containers/AssignmentDetail";
 import AssignmentCreate from "../containers/AssignmentCreate";
-import Grades from "./Grades";
 
 const BaseRoute = (props) => {
   return (

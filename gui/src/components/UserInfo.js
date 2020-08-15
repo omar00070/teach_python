@@ -28,9 +28,14 @@ const UserInfo = (props) => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    return {};
+  };
+
   return (
     <div className="list-card user-info-card">
-      <from>
+      <form onSubmit={handleSubmit}>
         <div className="user-info-content">
           <h2 className="uf-title">User Information</h2>
           <div className="uf-container">
@@ -93,7 +98,7 @@ const UserInfo = (props) => {
             <button className="login-btn uf-btn">Update</button>
           </div>
         </div>
-      </from>
+      </form>
     </div>
   );
 };

@@ -80,6 +80,9 @@ const AssignmentDetail = (props) => {
                   <div className="assignemnt-title">
                     <h3>{props.currentAssignment.title}</h3>
                   </div>
+                  <div className="question-tracker">
+                    <h5>{`${count + 1}/ ${questions.length}`}</h5>
+                  </div>
 
                   <Question
                     title={questions[count].question}

@@ -15,14 +15,14 @@ export const Nav = ({ isAuthenticated, logout, username }) => {
         isAuthenticated={isAuthenticated}
         handleClick={handleClick}
       >
-        {isAuthenticated ? (
+        {isAuthenticated && (
           <NavItem
             name="profile"
             linkTo={`/profile/${username}`}
             handleClick={handleClick}
             active={active}
           />
-        ) : null}
+        )}
 
         <NavItem
           name="home"

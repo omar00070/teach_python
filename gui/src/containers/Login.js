@@ -50,16 +50,7 @@ const Login = (props) => {
   };
 
   return (
-    <div
-      className="login-page"
-      style={{
-        display: "flex",
-        width: "100%",
-        height: "80.5vh",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="login-page">
       <div className="login-box">
         {props.isAuthenticated && (
           <Redirect to={`/profile/${props.username}`} />

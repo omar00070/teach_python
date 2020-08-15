@@ -53,6 +53,34 @@ ul {
   width: 100%;
   transition: all 0.3s ease-in;
 }
+.nav-active-auth {
+  height: 28rem;
+  transition: all 0.3s ease-in;
+}
+
+.nav-active-not-auth {
+  height: 23rem;
+  transition: all 0.3s ease-in;
+}
+.nav-non-active {
+  height: 7rem;
+  transition: all 0.3s ease-in;
+}
+.active-auth {
+  opacity: 1;
+  margin-top: 5rem;
+}
+
+.active-not-auth {
+  opacity: 1;
+  margin-top: 6rem;
+}
+
+.non-active {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8rem);
+}
 
 a {
   position: relative;
@@ -101,19 +129,31 @@ a:hover::before {
 /*<----------------------------------- banner ------------------------------>*/
 
 .banner {
+  color: white;
+  background: #00416a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   width: 100%;
   height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: rgb(190, 190, 190);
+  border-bottom: rgb(219, 218, 218);
   /* background: url("../imges/code.jpg") repeat rgba(43, 3, 3, 0.89); */
   font-family: "Raleway", sans-serif;
 }
 
 .banner p {
-  color: rgb(105, 105, 105);
+  color: rgb(202, 202, 202);
 }
 
 .btn {
@@ -130,6 +170,7 @@ a:hover::before {
   cursor: pointer;
   transform-origin: left;
   transition: all 0.3s ease-in-out;
+  color: black;
 }
 
 .btn:hover {
@@ -147,6 +188,7 @@ a:hover::before {
 
 .banner-container {
   font-size: 2rem;
+  width: 30rem;
 }
 
 .banner-container h1 {
@@ -154,6 +196,20 @@ a:hover::before {
   font-size: 5rem;
   margin: 10px 0;
   text-transform: uppercase;
+}
+
+.banner-container a {
+  padding: 0;
+  margin: 0;
+}
+.banner-container a::before {
+  width: 0;
+}
+
+.banner-container a:hover,
+.banner-container a:active,
+.banner-container a:focus {
+  background: none;
 }
 
 /*<----------------------------------- MainSection ------------------------------>*/
@@ -420,6 +476,25 @@ a:hover::before {
 }
 /* <---------------------------------Login Section -----------------------------> */
 
+.login-page {
+  background: #00416a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9cb2c9,
+    #00416a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  width: 100%;
+  height: 80.5vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-box {
   font-size: 1.4rem;
   display: flex;
@@ -472,20 +547,6 @@ a:hover::before {
 
 .login-btn:active {
   background-color: #00416a;
-}
-
-.login-page {
-  background: #00416a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #9cb2c9,
-    #00416a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #9cb2c9,
-    #00416a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .login-box p {
@@ -556,6 +617,7 @@ a:hover::before {
   justify-content: space-around;
   align-items: center;
 }
+/* <---------------------------------profile Section -----------------------------> */
 
 .profile-info {
   transform: translateY(-7.5rem);
@@ -696,4 +758,70 @@ li {
 
 .uf-btn {
   max-width: 15rem;
+}
+
+.question-tracker {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* <---------------------------------media queries Section -----------------------------> */
+
+@media only screen and (min-width: 600px) {
+  .nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    width: 50%;
+    margin: 0 auto;
+  }
+  .non-active {
+    opacity: 1;
+    transform: translateY();
+  }
+  .menu-icon {
+    display: none;
+  }
+  .nav ul a {
+    color: rgb(112, 112, 112);
+    padding: 1.5rem 0;
+    width: 0;
+  }
+  .nav-actve-auth,
+  .nav-active-not-auth,
+  .nav {
+    height: 7rem;
+  }
+  .nav ul a:hover {
+    color: rgb(15, 15, 15);
+    background: none;
+  }
+  .nav ul a::before {
+    width: 0;
+  }
+  .nav ul a:active {
+    color: black;
+    background: none;
+  }
+  .nav ul a:focus {
+    color: black;
+    background: none;
+  }
+  .layout {
+    min-height: 82vh;
+  }
+  .ASST-section {
+    height: 82vh;
+  }
+  .login-page {
+    min-height: 82vh;
+  }
+  .banner-container {
+    width: 40rem;
+  }
 }

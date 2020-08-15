@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/assignments";
 import { Card } from "../components/Card";
@@ -12,7 +12,7 @@ const AssignmentList = (props) => {
   }, [props.token]);
   return (
     <>
-      {/* {!props.isAuthenticated && <Redirect to={`login/`} />} */}
+      {!props.isAuthenticated && <Redirect to={`login/`} />}
 
       <div className="ASST-section">
         <div className="container">

@@ -18,14 +18,13 @@ export const NavContainer = (props) => {
 
   return (
     <div
-      style={
+      className={
         props.active
           ? props.isAuthenticated
-            ? { height: "28rem" }
-            : { height: "23rem" }
-          : { height: "7rem" }
+            ? "nav nav-active-auth"
+            : "nav nav-active-not-auth"
+          : "nav nav-non-active"
       }
-      className="nav"
     >
       <FaPython className="logo" style={logoStyles} />
 
@@ -43,16 +42,12 @@ export const NavContainer = (props) => {
         />
       )}
       <ul
-        style={
+        className={
           props.active
             ? props.isAuthenticated
-              ? { opacity: "1", transform: undefined, marginTop: "5rem" }
-              : { opacity: "1", transform: undefined, marginTop: "6rem" }
-            : {
-                opacity: "0",
-                pointerEvents: "none",
-                transform: "translateY(-5rem)",
-              }
+              ? "active-auth"
+              : "active-not-auth"
+            : "non-active"
         }
       >
         {props.children.map((Child, n) => (

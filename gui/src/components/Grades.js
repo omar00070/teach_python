@@ -22,7 +22,7 @@ const Grades = (props) => {
         return (
           <div
             key={asst.id}
-            className={n % 2 == 0 ? "grades-row" : "grades-row alter-row"}
+            className={n % 2 === 0 ? "grades-row" : "grades-row alter-row"}
           >
             <p>{n + 1}</p>
             <li>{asst.assignment}</li>
